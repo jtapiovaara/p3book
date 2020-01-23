@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<h1>{{ object.title }}</h1>
+    <div>
+    {{ object.authors }}
+{#        {% for authors in object.authors %}#}
+{#            <li>#}
+{#                {{ object.authors.name }}#}
+{#            </li>#}
+{#        {% endfor %}#}
+    </div>
+    <p>{{ object.pages }} sivua</p>
+{#<p> by <a href="{%  url 'author:authordetail' %}">{{ object.authors.name }}</a></p>#}
+<p>Kustantaja: <a href="{% url 'books:publisherdetail' object.publisher.id %}">{{ object.publisher }}</a></p>
+<p>Ilmestymisvuosi: {{ object.publication_date }}</p>
+<p>Date: {{ now|date }}</p>
+
+{% endblock %}

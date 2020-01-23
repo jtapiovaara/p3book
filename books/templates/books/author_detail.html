@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    {% load static %}
+
+{#<h1><img src="{{ object.headshot.name }}" class="rounded img-fluid"></h1>#}
+    <div>
+        <p>tähän kuva {{ author_yx.headshot }}</p>
+        <p> {{ author_yx.salutation }} {{ author_yx.name }}</p>
+        <p><a href="{{ author_yx.internet }}" target="_blank">Verkkosivut</a></p>
+    </div>
+
+    <div>
+        <ul>
+            {% for book in authors_books %}
+                <li><a href="{% url 'books:bookdetail' book.id %}">{{ book.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{% endblock %}

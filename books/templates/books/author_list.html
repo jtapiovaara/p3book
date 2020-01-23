@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2>Kirjailijat, joita Tapsa Tapiovaara on kuvittanut</h2>
+    <ul>
+        {% for author in authors_with_tapsa_twix %}
+{#            <li>{{ author.name }}</li>#}
+            <li><a href="{%  url 'books:authordetail' author.id %}">{{ author.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

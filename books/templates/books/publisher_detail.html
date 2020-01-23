@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    {% load static %}
+{#<h1><img src="{{ object.headshot.name }}" class="rounded img-fluid"></h1>#}
+    <div>
+        <p> {{ publisher_yx.name }}</p>
+        <p> {{ publisher_yx.address }}</p>
+        <p>{{ publisher_yx.state_province }} {{ publisher_yx.city }}</p>
+        <p><a href="{{ publisher_yx.website }}" target="_blank">Kotisivut</a></p>
+    </div>
+    <div>
+        <ul>
+            {% for book in publishers_books %}
+                <li><a href="{% url 'books:bookdetail' book.id %}">{{ book.title }}</a></li>
+            {% endfor %}
+        </ul>
+{#    </div>#}
+{#    <div>#}
+{#        <ul>#}
+{#            {% for author in publishers_books.query.distinct %}#}
+{#                <li><a href="{% url 'books:authordetail' author.id %}">{{ author }}</a></li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
+{% endblock %}
