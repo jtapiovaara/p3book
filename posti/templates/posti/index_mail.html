@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<head>
+    <title>Lähetetty!</title>
+</head>
+<body>
+<p>
+    {% csrf_token %}
+    Great!!  {{form}} lähetti juuri toivomuksen liittyä seuraamaan.
+    Lähetä hänelle oheinen linkki kuittauksena.</p>
+</body>
+{% endblock %}

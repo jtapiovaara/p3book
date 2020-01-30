@@ -1,7 +1,9 @@
 from django.shortcuts import render
-
 from django.views.generic import ListView, DetailView
+
 from books.models import Publisher, Book, Author
+
+
 
 
 # Create your views here.
@@ -47,14 +49,25 @@ class PublisherList(ListView):
 
 def publisherdetail(request, pk):
 
+# tämä itse etsimällä kehitetty
+
     publisher_yx = Publisher.objects.get(pk=pk)
     publishers_books = Book.objects.filter(publisher_id=pk)
+
+# tämä ORM Kwick harjoituksesta.
+
+    # publisher_yx = Publisher.objects.prefetch_related('book_set').get(pk=pk)
+    # publishers_books = publisher_yx.book_set.all()
 
     context = {
         'publisher_yx': publisher_yx,
         'publishers_books': publishers_books
     }
     return render(request, 'books/publisher_detail.html', context)
+
+
+
+
 
 
 

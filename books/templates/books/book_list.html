@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-    <h2>Tapsa Tapiovaaran kuvittamat kirjat</h2>
+
+        <h2>Tapsa Tapiovaaran kuvittamat kirjat</h2>
     <ul>
         {% for book in books_by_tapsa %}
 {#            <li>{{ book.title }}</li>#}
             <li><a href="{%  url 'books:bookdetail' book.id %}">{{ book.title }}</a></li>
         {% endfor %}
     </ul>
+
+
 {% endblock %}
