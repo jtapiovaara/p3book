@@ -5,15 +5,10 @@
 
 <div class="container width-auto text-center card rounded shadow">
 <h1>{{ object.title }}</h1>
-    <img class="rounded img-fluid mx-auto d-block" style="width:35%" src="{% static "images/" %}{{ object.book_image }}"  alt = "Kuva ladataan pian palveluun.">
     <div>
-    {{ object.authors }}
-{#        {% for authors in object.authors %}#}
-{#            <li>#}
-{#                {{ object.authors.name }}#}
-{#            </li>#}
-{#        {% endfor %}#}
+    Kirjailija {{ object.author_set.get}}
     </div>
+    <img class="rounded img-fluid mx-auto d-block" style="width:35%" src="{% static "images/" %}{{ object.book_image }}"  alt = "Kuva ladataan pian palveluun.">
     <p>{{ object.pages }} sivua</p>
 {#<p> by <a href="{%  url 'author:authordetail' %}">{{ object.authors.name }}</a></p>#}
 <p>Kustantaja: <a href="{% url 'books:publisherdetail' object.publisher.id %}">{{ object.publisher }}</a></p>

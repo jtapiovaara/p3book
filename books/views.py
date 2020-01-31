@@ -4,10 +4,6 @@ from django.views.generic import ListView, DetailView
 from books.models import Publisher, Book, Author
 
 
-
-
-# Create your views here.
-
 class BookList(ListView):
     model = Book
     context_object_name = 'books_by_tapsa'
@@ -30,10 +26,9 @@ class AuthorList(ListView):
     context_object_name = 'authors_with_tapsa_twix'
 
 
-def AuthorDetail(request, pk):
+def authordetail(request, pk):
     author_yx = Author.objects.get(pk=pk)
-    # authors_books = Book.objects.filter(authors=author_yx.authors)
-    authors_books = Book.objects.all()
+    authors_books = Book.objects.filter(author__id=author_yx.id)
 
     context = {
         'author_yx': author_yx,
@@ -49,15 +44,8 @@ class PublisherList(ListView):
 
 def publisherdetail(request, pk):
 
-# tämä itse etsimällä kehitetty
-
     publisher_yx = Publisher.objects.get(pk=pk)
     publishers_books = Book.objects.filter(publisher_id=pk)
-
-# tämä ORM Kwick harjoituksesta.
-
-    # publisher_yx = Publisher.objects.prefetch_related('book_set').get(pk=pk)
-    # publishers_books = publisher_yx.book_set.all()
 
     context = {
         'publisher_yx': publisher_yx,
